@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="src/static/styles/custom.css" />
+    <script
+      src="https://res.cdn.office.net/teams-js/2.9.1/js/MicrosoftTeams.min.js"
+      integrity="sha384-xnsUQ1tUqsrutBJl0vuf4/hufzLFWW8ZhGnhItfpQ0/BtWgM2uw6YT6BQ5YaKBSM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/static/scripts/teamsapp.js"></script>
+    <title>Microsoft Teams Tab</title>
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div>
+      <h1>Hello, World</h1>
+      <span>
+        <p>Your app is running</p>
+        <p id="hubState"></p>
+      </span>
+      <form id="form">
+        <input type="date" id="start-date" required>
+        <input type="date" id="end-date" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script type="text/javascript">
+      microsoftTeams.appInitialization.notifySuccess();
+      const form = document.querySelector('#form')
+      const startDate = document.querySelector('#start-date')
+      const endDate = document.querySelector('#end-date')
+      startDate.addEventListener("input", () => {
+        endDate.min = startDate.value;
+      })
+    </script>
+  </body>
+</html>
